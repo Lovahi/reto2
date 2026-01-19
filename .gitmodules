@@ -1,0 +1,6 @@
+[submodule "frontend/reto2-frontend"]
+	path = frontend/reto2-frontend
+	url = https://github.com/Lovahi/reto2-frontend.git
+[submodule "backend/reto2-backend"]
+	path = backend/reto2-backend
+	url = https://github.com/Lovahi/reto2-backend.git

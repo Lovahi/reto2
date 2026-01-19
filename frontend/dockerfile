@@ -1,9 +1,9 @@
 # Etapa de compilación
 FROM node:20 as build-stage
 WORKDIR /app
-COPY package*.json ./
+COPY reto2-frontend/package*.json ./
 RUN npm install
-COPY . .
+COPY reto2-frontend/ .
 RUN npm run build
 
 # Etapa de producción
