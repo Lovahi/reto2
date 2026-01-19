@@ -1,0 +1,38 @@
+services:
+  database:
+    build: ./mysql
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: reto2
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app-network
+
+  backend:
+    build: ./backend
+    container_name: php-backend
+    ports:
+      - "8080:80"
+    depends_on:
+      - database
+    networks:
+      - app-network
+
+  frontend:
+    build: ./frontend
+    container_name: vue-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db_data:
