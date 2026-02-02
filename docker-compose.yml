@@ -4,7 +4,7 @@ services:
     container_name: mysql-db
     environment:
       MYSQL_ROOT_PASSWORD: pass
-      MYSQL_DATABASE: reto2
+      MYSQL_DATABASE: gamefest
     volumes:
       - db_data:/var/lib/mysql
     networks:

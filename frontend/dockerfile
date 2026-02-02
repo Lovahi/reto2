@@ -1,5 +1,5 @@
 # Etapa de compilación
-FROM node:20 as build-stage
+FROM node:20-alpine as build-stage
 WORKDIR /app
 COPY reto2-frontend/package*.json ./
 RUN npm install
@@ -7,8 +7,17 @@ COPY reto2-frontend/ .
 RUN npm run build
 
 # Etapa de producción
-FROM nginx:alpine as production-stage
-COPY --from=build-stage /app/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+FROM httpd:alpine as production-stage
+
+# Copiar los archivos compilados
+COPY --from=build-stage /app/dist /usr/local/apache2/htdocs/
+
+# Copiar el archivo .htaccess para el enrutamiento de SPA
+COPY .htaccess /usr/local/apache2/htdocs/
+
+# Habilitar mod_rewrite en el archivo de configuración de Apache
+RUN sed -i '/LoadModule rewrite_module/s/^#//' /usr/local/apache2/conf/httpd.conf && \
+    sed -i 's/AllowOverride None/AllowOverride All/g' /usr/local/apache2/conf/httpd.conf
+
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+

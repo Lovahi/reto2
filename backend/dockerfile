@@ -3,11 +3,15 @@ FROM php:8.2-apache
 # Instalar extensiones necesarias
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-# Habilitar mod_rewrite para Apache (común en APIs)
-RUN a2enmod rewrite
+# Habilitar mod_rewrite y mod_headers para Apache
+RUN a2enmod rewrite headers
 
 # Copiar el código fuente
 COPY reto2-backend/ /var/www/html/
+
+ENV APACHE_DOCUMENT_ROOT /var/www/html/public
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
 # Establecer permisos correctos
 RUN chown -R www-data:www-data /var/www/html

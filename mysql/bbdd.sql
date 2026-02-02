@@ -25,8 +25,8 @@ CREATE TABLE users (
 
 -- Admin + usuario demo (hash placeholders: sustitúyelos por bcrypt real)
 INSERT INTO users (id, username, email, password_hash, role) VALUES
-(1, 'admin', 'admin@gamefest.local', '$2b$10$REEMPLAZA_ESTE_HASH_CON_BCRYPT_REAL', 'ADMIN'),
-(2, 'alumno', 'alumno@gamefest.local', '$2b$10$REEMPLAZA_ESTE_HASH_CON_BCRYPT_REAL', 'USER');
+(1, 'admin', 'admin@gamefest.local', '$2y$10$esE/mXOtzliSM4IhdjLBeOGkND6EKCL9h9wi.crDNRrJOlp1Jj9C.', 'ADMIN'),
+(2, 'alumno', 'alumno@gamefest.local', '$2y$10$9vswdH9s3RB.hs1OY53hbO339vjJCkq1myQL.tHdztTbFDRUvmUj6', 'USER');
 
 -- =========================
 -- GAMES

@@ -1,6 +1,4 @@
-#!/bin/bash
-
 # Construir e iniciar los contenedores
 docker-compose up --build -d
 
-echo "App deployed"
+Write-Host "App deployed" -ForegroundColor Green
