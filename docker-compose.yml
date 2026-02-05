@@ -17,6 +17,11 @@ services:
       - "8080:80"
     depends_on:
       - database
+    environment:
+      - DB_HOST=database
+      - DB_NAME=gamefest
+      - DB_USER=root
+      - DB_PASS=pass
     networks:
       - app-network
 
@@ -24,7 +29,7 @@ services:
     build: ./frontend
     container_name: vue-frontend
     ports:
-      - "80:80"
+      - "81:80"
     depends_on:
       - backend
     networks:

@@ -1,2 +1,5 @@
 FROM mysql:8.4
 COPY bbdd.sql /docker-entrypoint-initdb.d/
+
+#Forzamos a usar utf8mb4
+CMD ["mysqld", "--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]

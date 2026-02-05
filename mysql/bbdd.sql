@@ -3,6 +3,8 @@
 -- users + games + events + user_events (N:M)
 -- Imágenes: se guarda SOLO el nombre de archivo (del ZIP)
 -- =========================================================
+SET NAMES 'utf8mb4';
+SET CHARACTER SET utf8mb4;
 
 DROP DATABASE IF EXISTS gamefest;
 CREATE DATABASE gamefest
@@ -25,8 +27,8 @@ CREATE TABLE users (
 
 -- Admin + usuario demo (hash placeholders: sustitúyelos por bcrypt real)
 INSERT INTO users (id, username, email, password_hash, role) VALUES
-(1, 'admin', 'admin@gamefest.local', '$2y$10$esE/mXOtzliSM4IhdjLBeOGkND6EKCL9h9wi.crDNRrJOlp1Jj9C.', 'ADMIN'),
-(2, 'alumno', 'alumno@gamefest.local', '$2y$10$9vswdH9s3RB.hs1OY53hbO339vjJCkq1myQL.tHdztTbFDRUvmUj6', 'USER');
+(1, 'admin', 'admin@gamefest.local', '$2y$10$xpZoDTLFIeVUHj7f2GhtVujBI8qkge9SBhapVD2UIYtibTqciaopG', 'ADMIN'),
+(2, 'alumno', 'alumno@gamefest.local', '$2y$10$7WVy9DAFeg6GrWt/pe80ruFa3xcD8An8x.cyquTLjaxFWAVCMc3ru', 'USER');
 
 -- =========================
 -- GAMES
